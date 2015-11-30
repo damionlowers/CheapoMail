@@ -48,9 +48,19 @@ class User{
 
 	}
 
-	// public function findUser(user){
+	public function find($user_id,$conn){
 
-	// }
+		$query = $conn->prepare("SELECT * FROM users WHERE id=?");
+
+		if($query -> execute(array($user_id))>0){
+			return $query->fetchAll(PDO::FETCH_ASSOC);
+
+		}else{
+
+			echo "Error: ".$e;
+		}
+	}
+
 
 	// public function findAll(){
 
@@ -62,6 +72,8 @@ $user = new User();
 
 // echo $user -> insertUser("Damion","Lowers","lowers1989","damionlowers",$conn);
 
-echo $user-> deleteUser(10,$conn);
+// echo $user-> deleteUser(10,$conn);
+
+print_r ($user -> find(1,$conn));
 
 ?>

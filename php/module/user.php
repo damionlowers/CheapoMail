@@ -1,5 +1,6 @@
 <?php
 require_once '../config/config.php';
+session_start();
 class User{
 
 	function __autoload($class_name) {
@@ -55,21 +56,26 @@ class User{
 
 
 		$query -> execute(array($username,$password));
-		return $query->fetchAll(PDO::FETCH_ASSOC);
+		//return $query->fetchAll(PDO::FETCH_ASSOC);
 
-		// if(count($query->fetchAll(PDO::FETCH_ASSOC)) > 0){
-		// 	session_start();
-		// 	$_SESSION["username"] = $username;
-		// 	$_SESSION["favanimal"] = $password;
+		$result = $query->fetch(PDO::FETCH_ASSOC);
 
-		// 	return array("status"=>200);
-		// 	//echo "Logged in successfully";
+
+
+		if(count($result) > 0){
+			// session_start();
+			$_SESSION["username"] = $username;
+			$_SESSION["firstname"] = $result['first_name'];
+			$_SESSION["lastname"] = $result['last_name'];
+
+			return array("status"=>200);
+			//echo "Logged in successfully";
 			
 
-		// }else{
-		// 	return array("status"=>403);
-		// 	//echo "Error: ".$e;
-		// }
+		}else{
+			return array("status"=>403);
+			//echo "Error: ".$e;
+		}
 
 	}
 
@@ -105,9 +111,9 @@ class User{
 
 }
 
- $user = new User();
+//  $user = new User();
 
-print_r(json_encode($user->loginuser("damionlowers","lowers1989",$conn)));
+// print_r(json_encode($user->loginuser("damionlowers","lowers1989",$conn)));
 
 // echo $user -> insertUser("Damion","Lowers","lowers1989","damionlowers",$conn);
 

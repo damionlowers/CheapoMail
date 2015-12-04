@@ -2,7 +2,7 @@
 require_once "application_controller.php";
 require_once "../module/user.php";
 require_once "../config/config.php";
-session_start();
+
 
 class UserController extends ApplicationController{
 

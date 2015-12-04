@@ -34,9 +34,14 @@ class UserController extends ApplicationController{
 	}
 
 
-	// public function new(){
+	public function new($first_name,$last_name,$password,$username,$conn){
+
+		$allUsers = new User;
+		$user = $allUsers -> loginUser($first_name,$last_name,$password,$username,$conn);
+		return $user;
+
 		
-	// }
+	}
 
 }
 
@@ -55,7 +60,34 @@ if( $_POST['request'] === 'login'){
 
 	//print_r($arrayName = array('status'=>403 ));
 }
-else{
+elseif($_POST['request']==='find')
+{
+
+	$user_id = $_POST['user_id'];
+
+	echo json_encode($userObj -> find($user_id,$conn));
+
+}
+elseif ($_POST['request'] ==='findall')
+{
+	# code...
+}
+elseif($_POST['request'] === 'insert')
+{
+	$first_name = $_POST['firstname'];
+	$last_name = $_POST['lastname'];
+	$password = $_POST['password'];
+	$username = $_POST['username'];
+
+	echo json_encode($userObj -> new($first_name,$last_name,$password,$username,$conn));
+
+}
+elseif($_POST['request'] === 'delete')
+{
+
+}
+else
+{
 	echo "Something is wrong";
 }
 

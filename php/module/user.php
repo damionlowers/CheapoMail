@@ -8,17 +8,17 @@ class User{
 
 	public function __construct(){
 
-		echo 'The class "', __CLASS__, '" was initiated!<br />';
+		// echo 'The class "', __CLASS__, '" was initiated!<br />';
 	}
 
 	public function __destruct()
 	{
-		echo 'The class "', __CLASS__, '" was destroyed.<br />';
+		// echo 'The class "', __CLASS__, '" was destroyed.<br />';
 	}
 
 	public function __toString()
 	{
-		echo "Using the toString method: ";
+		// echo "Using the toString method: ";
 		// return $this->getProperty();
 	}
 
@@ -45,6 +45,31 @@ class User{
 			echo "Error deleting record: <br/>" . $conn->error;
 		}
 
+
+	}
+
+
+	public function loginuser($username,$password,$conn){
+
+		$query = $conn->prepare("select * FROM users where username=? and password=?");
+
+
+		$query -> execute(array($username,$password));
+		return $query->fetchAll(PDO::FETCH_ASSOC);
+
+		// if(count($query->fetchAll(PDO::FETCH_ASSOC)) > 0){
+		// 	session_start();
+		// 	$_SESSION["username"] = $username;
+		// 	$_SESSION["favanimal"] = $password;
+
+		// 	return array("status"=>200);
+		// 	//echo "Logged in successfully";
+			
+
+		// }else{
+		// 	return array("status"=>403);
+		// 	//echo "Error: ".$e;
+		// }
 
 	}
 
@@ -80,13 +105,15 @@ class User{
 
 }
 
-$user = new User();
+ $user = new User();
+
+print_r(json_encode($user->loginuser("damionlowers","lowers1989",$conn)));
 
 // echo $user -> insertUser("Damion","Lowers","lowers1989","damionlowers",$conn);
 
 // echo $user-> deleteUser(10,$conn);
 
 // print_r ($user -> find(1,$conn));
-print_r ($user -> findAll($conn));
+// print_r ($user -> findAll($conn));
 
 ?>

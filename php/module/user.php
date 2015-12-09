@@ -67,6 +67,7 @@ class User{
 			$_SESSION["username"] = $username;
 			$_SESSION["firstname"] = $result['first_name'];
 			$_SESSION["lastname"] = $result['last_name'];
+			$_SESSION["user_id"] = $result['id'];
 
 			return array("status"=>200);
 			//echo "Logged in successfully";
@@ -94,24 +95,42 @@ class User{
 	}
 
 
-	public function findAll($conn){
+	public function findbyUsername($username,$conn){
 
-		$query = $conn->prepare("SELECT * FROM users");
+		$query = $conn->prepare("SELECT * FROM users WHERE username=?");
 
-		if($query -> execute(array())>0){
-			
+		if($query -> execute(array($username))>0){
+
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 
 		}else{
 
 			echo "Error: ".$e;
 		}
-
 	}
+
+
+	// public function findAll($conn){
+
+	// 	$query = $conn->prepare("SELECT * FROM users");
+
+	// 	if($query -> execute(array())>0){
+			
+	// 		return $query->fetchAll(PDO::FETCH_ASSOC);
+
+	// 	}else{
+
+	// 		echo "Error: ".$e;
+	// 	}
+
+	// }
 
 }
 
-//  $user = new User();
+ // $user = new User();
+
+ // echo( $user->findbyUsername("damionlowers",$conn)[0]['id']);
+ // echo $_SESSION["user_id"];
 
 // print_r(json_encode($user->loginuser("damionlowers","lowers1989",$conn)));
 

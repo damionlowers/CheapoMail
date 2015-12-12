@@ -29,9 +29,11 @@ class User{
 		// var_dump($conn-> query($sql));
 
 		if ($conn-> query($sql)) {
-			echo "New record created successfully <br/>";
+		//	echo "New record created successfully <br/>";
+			return array("status"=>200);
 		} else {
-			echo "Error: " . $sql . "<br>";
+		//	echo "Error: " . $sql . "<br>";
+			return array("status"=>404);
 		}
 
 	}
@@ -75,6 +77,32 @@ class User{
 
 		}else{
 			return array("status"=>403);
+			//echo "Error: ".$e;
+		}
+
+	}
+
+
+	public function checkUser($username,$conn){
+
+		$query = $conn->prepare("select * FROM users where username=?");
+
+
+		$query -> execute(array($username));
+		//return $query->fetchAll(PDO::FETCH_ASSOC);
+
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+		if(count($result) > 0){
+			// session_start();
+			return array("status"=>200);
+			//echo "Logged in successfully";
+			
+
+		}else{
+			return array("status"=>404);
 			//echo "Error: ".$e;
 		}
 
@@ -127,7 +155,9 @@ class User{
 
 }
 
- // $user = new User();
+ //$user = new User();
+
+ //print_r($user->checkUser("leo",$conn));
 
  // echo( $user->findbyUsername("damionlowers",$conn)[0]['id']);
  // echo $_SESSION["user_id"];

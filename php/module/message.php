@@ -83,7 +83,7 @@ class Message{
 			return array("status"=>200);
 		} else {
 			// echo "Error: " . $sql . "<br>";
-			return array("status"=>400);
+			return array("status"=>404);
 		}
 	}
 

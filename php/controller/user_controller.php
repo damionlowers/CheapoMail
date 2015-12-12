@@ -34,7 +34,8 @@ class UserController extends ApplicationController{
 	}
 
 
-	public function new_user($first_name,$last_name,$password,$username,$conn){
+	public function newUser($first_name,$last_name,$password,$username,$conn){
+
 
 		$allUsers = new User;
 		$user = $allUsers -> loginUser($first_name,$last_name,$password,$username,$conn);

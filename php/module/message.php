@@ -1,6 +1,6 @@
 <?php
 require_once '../config/config.php';
-class message{
+class Message{
 	public function __construct(){
 
 		// echo 'The class "', __CLASS__, '" was initiated!<br />';
@@ -17,7 +17,7 @@ class message{
 		// return $this->getProperty();
 	}
 
-	public check($conn){
+	public function check($conn){
 
 		$query = $conn->prepare("SELECT * FROM messages where flag=1");
 
@@ -32,7 +32,7 @@ class message{
 
 	}
 
-	public find($messageID,$conn){
+	public function find($messageID,$conn){
 		$query = $conn->prepare("SELECT * FROM messages WHERE id=$messageID");
 
 		if($query -> execute(array())>0){
@@ -45,7 +45,7 @@ class message{
 		}
 
 	}
-	public findall($conn){
+	public function findall($conn){
 		$query = $conn->prepare("SELECT * FROM messages");
 
 		if($query -> execute(array())>0){
@@ -59,7 +59,7 @@ class message{
 
 	}
 
-	public delete($messageID,$conn){
+	public function delete($messageID,$conn){
 		$sql = "DELETE FROM messages WHERE id=$userID";
 
 		if ($conn->query($sql)) {
@@ -70,16 +70,20 @@ class message{
 	}
 
 
-	public send($messageBody,$subject,$sender,$reciever,$conn){
+	public function sendMessage($messageBody,$subject,$sender_id,$reciever_id,$conn){
+
+		// $reciever_id = 3;
 		
-		$sql = "INSERT INTO messages (message_body, subject, user_id,recipent_id)VALUES ('$messageBody','$subject','$sender','$reciever')";
+		$sql = "INSERT INTO messages (message_body,subject,user_id,recipent_id)VALUES ('$messageBody','$subject','$sender_id','$reciever_id')";
 
 		// var_dump($conn-> query($sql));
 
-		if ($conn-> query($sql)) {
-			echo "New record created successfully <br/>";
+		if ($conn -> query($sql)) {
+			//echo "New record created successfully <br/>";
+			return array("status"=>200);
 		} else {
-			echo "Error: " . $sql . "<br>";
+			// echo "Error: " . $sql . "<br>";
+			return array("status"=>400);
 		}
 	}
 

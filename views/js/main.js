@@ -17,12 +17,32 @@ $(document).ready(function(){
 			$.post("../php/controller/user_controller.php",{ username: username, password:password, request:'login' },
 				function(data) {
 					data=JSON.parse(data);
-					if(data.status==200)
-						location.href="profile.php"
+					if(data.status==200){
+						location.href="profile.php";
+						// $('#usernameID').html(username);
+					}else{
+						$('input[type="text"],input[type="password"]').css("border","2px solid red");
+						$('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
+						alert("password or username incorrect");
+
+					}
 					console.log(data);
 				}
 			);
 		}
+	});
+
+	$('#logout').click(function(){
+
+		$.post("../php/controller/user_controller.php",{ request:'logout' },
+				function(data) {
+					data=JSON.parse(data);
+					if(data.status==200)
+						location.href="index.html";
+					console.log(data);
+				}
+			);
+
 	});
 
 

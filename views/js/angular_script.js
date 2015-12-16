@@ -34,7 +34,10 @@ App.config(function($routeProvider) {
 });
 
 App.controller('unread_message_Controller', function($scope) {
-		
+
+	$scope.trigger = function(){
+
+				
 		var promise = $.post("../php/controller/message_controller.php",{request:'findall' }).then(
 			function(response) {
 				// do something
@@ -65,6 +68,7 @@ App.controller('unread_message_Controller', function($scope) {
 		//console.log('This is unread messages');
 		//$scope.message = 'This is unread messages';
 
+	}
 
 });
 
@@ -79,13 +83,19 @@ App.controller('Mycontroller', function($scope) {
     });
 
 
+App.controller('MainClt', function($scope) {
+         $scope.message = "Hello Angular";
 
+         
+    });
 
 
 
 App.controller('read_message_Controller',function($scope) {
 	$scope.message = "read message";
     });
+
+
 App.controller('users_Controller',function($scope) {
          $scope.message = "Users";
 

@@ -58,16 +58,20 @@ class User{
 		$query -> execute(array($username,$password));
 		//return $query->fetchAll(PDO::FETCH_ASSOC);
 
-		$result = $query->fetch(PDO::FETCH_ASSOC);
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		// print_r( $result);
 
 
 
 		if(count($result) > 0){
+
+			//print_r($result[0]);
 			// session_start();
 			$_SESSION["username"] = $username;
-			$_SESSION["firstname"] = $result['first_name'];
-			$_SESSION["lastname"] = $result['last_name'];
-			$_SESSION["user_id"] = $result['id'];
+			$_SESSION["firstname"] = $result[0]['first_name'];
+			$_SESSION["lastname"] = $result[0]['last_name'];
+			$_SESSION["user_id"] = $result[0]['id'];
 
 			return array("status"=>200);
 			//echo "Logged in successfully";
@@ -154,6 +158,8 @@ class User{
 }
 
 // $user = new User();
+// // echo $user -> insertUser("Damion","Lowers","lowers1989","damionlowers",$conn);
+// print_r(json_encode($user->loginuser("damionlowers","lowers1989",$conn)));
 
  //print_r($user->checkUser("leo",$conn));
 

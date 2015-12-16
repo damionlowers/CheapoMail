@@ -22,11 +22,11 @@ require_once "../php/config/access_controller.php";
     <script src="js/main.js" type="text/javascript"></script>
 	</head>
 
-	<body ng-controller="unread_message_Controller">
+	<body ng-controller="unread_message_Controller " ng-mousemove="trigger()" >
 
 
-
-    <nav role="navigation" class="navbar navbar-inverse">
+<!-- navbar-inverse -->
+    <nav role="navigation" class="navbar">
 
         <!-- Brand and toggle get grouped for better mobile display -->
 
@@ -92,7 +92,7 @@ require_once "../php/config/access_controller.php";
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li id="usernameID">{{firstname}}{{lastname}}</li>
+                <li id="usernameID"><?php echo $_SESSION['username']?></li>
                 <li><button type="button" class="btn btn-danger" id="logout">log out</button></li>
 
             </ul>

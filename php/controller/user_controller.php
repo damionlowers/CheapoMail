@@ -23,6 +23,14 @@ class UserController extends ApplicationController{
 		return $user;
 	}
 
+	public function logout(){
+
+		session_destroy();
+
+		return array('status'=>200);
+
+	}
+
 
 	public function login($username,$password,$conn){
 
@@ -102,6 +110,10 @@ elseif ($_POST['request'] === 'checkuser') {
 elseif($_POST['request'] === 'delete')
 {
 
+}
+elseif($_POST['request'] === 'logout'){
+
+	echo json_encode($userObj -> logout());
 }
 else
 {

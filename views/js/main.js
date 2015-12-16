@@ -48,19 +48,21 @@ $(document).ready(function(){
 			console.log(cpassword+" "+password);
 			$.post("../../php/controller/user_controller.php",{ username: username, request:'checkuser' },
 				function(data){
-					alert(data);
+					alert("this"+data);
 					data=JSON.parse(data);
 					alert("username");
 					if(data.status==200){
 						alert("User already exists");
 					}
 					else{
+						alert("soon Successful");
 						$.post("../php/controller/user_controller.php",{ first_name:firstname, 
 						last_name:lastname, 
 			 			username:username, 
 			 			password:password, 
 			 			request:'insert'},
 			 			function(data) {
+			 				alert("created "+data);
 			 				data=JSON.parse(data);
 							if(data.status==200)
 			 					alert("Successful");

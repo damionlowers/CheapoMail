@@ -9,7 +9,7 @@ require_once "../php/config/access_controller.php";
 		<title>Profile</title>
 		<link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link href="css/bootstrap/main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/angular.min.js"></script>
@@ -22,7 +22,7 @@ require_once "../php/config/access_controller.php";
     <script src="js/main.js" type="text/javascript"></script>
 	</head>
 
-	<body ng-controller="unread_message_Controller " ng-mousemove="trigger()" >
+	<body id="bodya" ng-controller="unread_message_Controller" ng-mousemove="trigger()">
 
 
 <!-- navbar-inverse -->
@@ -44,7 +44,7 @@ require_once "../php/config/access_controller.php";
 
             </button> -->
 
-            <a href="#" class="navbar-brand">Brand</a>
+            <a href="#" class="navbar-brand"><i>Cheapermail</i></a>
 
         </div>
 
@@ -92,7 +92,7 @@ require_once "../php/config/access_controller.php";
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li id="usernameID"><?php echo $_SESSION['username']?></li>
+                <li id="usernameID">Damion Lowers  </li>
                 <li><button type="button" class="btn btn-danger" id="logout">log out</button></li>
 
             </ul>
@@ -113,7 +113,7 @@ require_once "../php/config/access_controller.php";
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        Start Bootstrap
+                       Home
                     </a>
                 </li>
                 <!-- <li>

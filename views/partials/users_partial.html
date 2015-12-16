@@ -9,38 +9,57 @@
 
 </head>
 <body>	
-	<form role="form" method="post" action="#">
+	<form ng-submit="addUser()">
 		<div class="row">
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<div class="form-group">
-	    			<input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+	    			<input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name" ng-model='firstname'>
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<div class="form-group">
-					<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+					<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name" ng-model='lastname'>
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<div class="form-group">
-					<input type="text" name="username" id="username" class="form-control input-sm" placeholder="Username">
+					<input type="text" name="username" id="username" class="form-control input-sm" placeholder="Username" ng-model='username'>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<div class="form-group">
-					<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+					<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" ng-model='password'>
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<div class="form-group">
-					<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+					<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" ng-model='cPassword'>
 				</div>
 			</div>
 		</div>
-		<input type="button" name="login" value="Add User" id="signup" class="btn btn-info btn-block">
+		<button type="submit" name="login" value="Add User" id="signup" class="btn btn-info btn-block">Post</button>
+		<!-- <input type="button" name="login" value="Add User" id="signup" class="btn btn-info btn-block"> -->
 		<!-- <input type="submit" value="Register" id="signup" class="btn btn-info btn-block"> -->
 	</form>
+
+	<!-- <form id ="submitform" ng-submit="submit()">
+      <div class="row" >
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4" ng-repeat="heart in Hearts">
+          <input  type="checkbox" ng-model='heart.$$hashKey' 
+                                  ng-change="totalCost(heart.courses_offered_id,heart.price,heart.$$hashKey)"
+                                  name={{heart.courses_offered_id}} 
+                                  data-toggle-key-codes="[32]">
+          {{heart.courses_offered_name}}
+        </div>
+        <div class="col-md-4">
+        </div>
+      </div>
+
+       <input type="submit" id="submit" value="Submit" class="btn btn-primary" />
+  </form> -->
 </body>
 </html>

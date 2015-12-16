@@ -13,6 +13,7 @@ require_once "../php/config/access_controller.php";
     
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/bs-table.js"></script>
 
     <script src="js/angular-route.js"></script>
     <script src="js/angular_script.js"></script>
@@ -21,7 +22,7 @@ require_once "../php/config/access_controller.php";
     <script src="js/main.js" type="text/javascript"></script>
 	</head>
 
-	<body ng-controller="Mycontroller">
+	<body ng-controller="unread_message_Controller">
 
 
 
@@ -123,6 +124,9 @@ require_once "../php/config/access_controller.php";
                 </li>
                 <li>
                     <a href="#read_messages_partial">Read Messages</a>
+                </li>
+                <li>
+                    <a href="#users_partial">Users</a>
                 </li>
                 <li>
                     <a href="#/">My Links</a>

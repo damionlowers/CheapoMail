@@ -88,4 +88,7 @@ class Message{
 	}
 
 }
+
+// $messageObj = new Message;
+// print_r($messageObj->findall($conn));
 ?>

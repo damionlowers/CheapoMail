@@ -43,12 +43,10 @@ class User{
 
 
 		if ($conn->query($sql)) {
-			echo "Record deleted successfully<br/>";
+			return array("status"=>200);
 		} else {
-			echo "Error deleting record: <br/>" . $conn->error;
+			return array("status"=>404);
 		}
-
-
 	}
 
 
@@ -138,24 +136,24 @@ class User{
 	}
 
 
-	// public function findAll($conn){
+	public function findAll($conn){
 
-	// 	$query = $conn->prepare("SELECT * FROM users");
+		$query = $conn->prepare("SELECT * FROM users WHERE id <> ".$_SESSION['user_id']);
 
-	// 	if($query -> execute(array())>0){
+		if($query -> execute(array())>0){
 			
-	// 		return $query->fetchAll(PDO::FETCH_ASSOC);
+			return $query->fetchAll(PDO::FETCH_ASSOC);
 
-	// 	}else{
+		}else{
 
-	// 		echo "Error: ".$e;
-	// 	}
+			return $arrayName = array('status' => 404 );
+		}
 
-	// }
+	}
 
 }
 
- //$user = new User();
+// $user = new User();
 
  //print_r($user->checkUser("leo",$conn));
 

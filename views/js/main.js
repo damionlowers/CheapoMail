@@ -18,7 +18,7 @@ $(document).ready(function(){
 				function(data) {
 					data=JSON.parse(data);
 					if(data.status==200)
-						location.href="profile.html"
+						location.href="profile.php"
 					console.log(data);
 				}
 			);

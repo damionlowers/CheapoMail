@@ -77,9 +77,10 @@ elseif($_POST['request']==='find')
 	echo json_encode($userObj -> find($user_id,$conn));
 
 }
-elseif ($_POST['request'] ==='findall')
+elseif ($_POST['request'] ==='findallUsers')
 {
 	# code...
+	echo json_encode($userObj -> all($conn));
 }
 elseif($_POST['request'] === 'insert')
 {

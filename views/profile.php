@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once "../php/config/access_controller.php";
+?>
 <!DOCTYPE html>
 <html ng-app="my-app">
 	<head>
@@ -5,9 +9,11 @@
 		<title>Profile</title>
 		<link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/bootstrap/main.css" rel="stylesheet">
     
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/bs-table.js"></script>
 
     <script src="js/angular-route.js"></script>
     <script src="js/angular_script.js"></script>
@@ -16,11 +22,11 @@
     <script src="js/main.js" type="text/javascript"></script>
 	</head>
 
-	<body ng-controller="Mycontroller">
+	<body ng-controller="unread_message_Controller " ng-mousemove="trigger()" >
 
 
-
-    <nav role="navigation" class="navbar navbar-inverse">
+<!-- navbar-inverse -->
+    <nav role="navigation" class="navbar">
 
         <!-- Brand and toggle get grouped for better mobile display -->
 
@@ -86,7 +92,8 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="#">Login</a></li>
+                <li id="usernameID"><?php echo $_SESSION['username']?></li>
+                <li><button type="button" class="btn btn-danger" id="logout">log out</button></li>
 
             </ul>
 
@@ -117,6 +124,9 @@
                 </li>
                 <li>
                     <a href="#read_messages_partial">Read Messages</a>
+                </li>
+                <li>
+                    <a href="#users_partial">Users</a>
                 </li>
                 <li>
                     <a href="#/">My Links</a>

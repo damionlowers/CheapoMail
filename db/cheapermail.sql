@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS read_messages;
+DROP TABLE IF EXISTS users;
+
 
 create table users(
 	id int(11) auto_increment NOT NULL,
@@ -10,6 +11,7 @@ create table users(
 	username varchar(30) NOT NULL,
 	created_at TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP NOT NULL,
+	type varchar(30) NOT NULL DEFAULT "Regular",
 	PRIMARY KEY(id)
 );
 
@@ -18,7 +20,7 @@ create table messages(
 	message_body LONGTEXT NOT NULL,
 	subject varchar(50) NOT NULL,
 	user_id int(11) NOT NULL,
-	flag int(11) NOT NULL,
+	flag int(11) NOT NULL DEFAULT 0,
 	recipent_id int(11) NOT NULL,
 	created_at TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP NOT NULL,

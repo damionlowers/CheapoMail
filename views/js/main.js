@@ -17,24 +17,48 @@ $(document).ready(function(){
 			$.post("../php/controller/user_controller.php",{ username: username, password:password, request:'login' },
 				function(data) {
 					data=JSON.parse(data);
-					if(data.status==200)
-						location.href="profile.html"
+					if(data.status==200){
+						location.href="profile.php";
+						// $('#usernameID').html(username);
+					}else{
+						$('input[type="text"],input[type="password"]').css("border","2px solid red");
+						$('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
+						alert("password or username incorrect");
+
+					}
 					console.log(data);
 				}
 			);
 		}
 	});
+
+	$('#logout').click(function(){
+
+		$.post("../php/controller/user_controller.php",{ request:'logout' },
+				function(data) {
+					data=JSON.parse(data);
+					if(data.status==200)
+						location.href="index.html";
+					console.log(data);
+				}
+			);
+
+	});
+
+
+
+
 	
 	//Signup
 	$('#signup').click(function(){
-		alert("fjhdjdj");
+		// alert("fjhdjdj");
 		var firstname = $("#first_name").val();
 		var lastname = $("#last_name").val();
 		var username = $("#username").val();
 		var password = $("#password").val();
-		alert("fhjjdfh");
+		// alert("fhjjdfh");
 		var cpassword = $("#password_confirmation").val();
-		console.log(cpassword+" "+password);
+		// console.log(cpassword+" "+password);
 		if( cpassword != password){
 			alert("passwords do not match");
 		}
@@ -44,25 +68,27 @@ $(document).ready(function(){
 			alert("Please fill all fields...!!!!!!");
 		}
 		else {
-			alert("hhhhhh");
-			console.log(cpassword+" "+password);
+			// alert("hhhhhh");
+			// console.log(cpassword+" "+password);
 			$.post("../../php/controller/user_controller.php",{ username: username, request:'checkuser' },
 				function(data){
-					alert("this"+data);
+					// alert("this"+data);
 					data=JSON.parse(data);
-					alert("username");
+					// alert("username");
 					if(data.status==200){
 						alert("User already exists");
 					}
 					else{
 						alert("soon Successful");
-						$.post("../php/controller/user_controller.php",{ first_name:firstname, 
-						last_name:lastname, 
-			 			username:username, 
-			 			password:password, 
-			 			request:'insert'},
-			 			function(data) {
-			 				alert("created "+data);
+						$.post("../../php/controller/user_controller.php",{ 
+							firstname:firstname, 
+							lastname:lastname, 
+							username:username, 
+							password:password,
+							request:'insert'
+						},
+						function(data) {
+							alert("created "+data);
 			 				data=JSON.parse(data);
 							if(data.status==200)
 			 					alert("Successful");
@@ -74,6 +100,11 @@ $(document).ready(function(){
 			);
 		}
 	});
+
+
+
+
+
 		
 
 	$("#messageSend").click(function(){
@@ -126,6 +157,4 @@ $(document).ready(function(){
 			);
 		}
 	});
-
-
 });

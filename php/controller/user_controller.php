@@ -23,6 +23,14 @@ class UserController extends ApplicationController{
 		return $user;
 	}
 
+	public function logout(){
+
+		session_destroy();
+
+		return array('status'=>200);
+
+	}
+
 
 	public function login($username,$password,$conn){
 
@@ -77,9 +85,10 @@ elseif($_POST['request']==='find')
 	echo json_encode($userObj -> find($user_id,$conn));
 
 }
-elseif ($_POST['request'] ==='findall')
+elseif ($_POST['request'] ==='findallUsers')
 {
 	# code...
+	echo json_encode($userObj -> all($conn));
 }
 elseif($_POST['request'] === 'insert')
 {
@@ -88,7 +97,7 @@ elseif($_POST['request'] === 'insert')
 	$password = $_POST['password'];
 	$username = $_POST['username'];
 
-	echo json_encode($userObj -> insertUser($first_name,$last_name,$password,$username,$conn));
+	echo json_encode($userObj -> newUser($first_name,$last_name,$password,$username,$conn));
 
 }
 elseif ($_POST['request'] === 'checkuser') {
@@ -101,6 +110,10 @@ elseif ($_POST['request'] === 'checkuser') {
 elseif($_POST['request'] === 'delete')
 {
 
+}
+elseif($_POST['request'] === 'logout'){
+
+	echo json_encode($userObj -> logout());
 }
 else
 {

@@ -43,12 +43,10 @@ class User{
 
 
 		if ($conn->query($sql)) {
-			echo "Record deleted successfully<br/>";
+			return array("status"=>200);
 		} else {
-			echo "Error deleting record: <br/>" . $conn->error;
+			return array("status"=>404);
 		}
-
-
 	}
 
 
@@ -60,16 +58,20 @@ class User{
 		$query -> execute(array($username,$password));
 		//return $query->fetchAll(PDO::FETCH_ASSOC);
 
-		$result = $query->fetch(PDO::FETCH_ASSOC);
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		// print_r( $result);
 
 
 
 		if(count($result) > 0){
+
+			//print_r($result[0]);
 			// session_start();
 			$_SESSION["username"] = $username;
-			$_SESSION["firstname"] = $result['first_name'];
-			$_SESSION["lastname"] = $result['last_name'];
-			$_SESSION["user_id"] = $result['id'];
+			$_SESSION["firstname"] = $result[0]['first_name'];
+			$_SESSION["lastname"] = $result[0]['last_name'];
+			$_SESSION["user_id"] = $result[0]['id'];
 
 			return array("status"=>200);
 			//echo "Logged in successfully";
@@ -138,24 +140,26 @@ class User{
 	}
 
 
-	// public function findAll($conn){
+	public function findAll($conn){
 
-	// 	$query = $conn->prepare("SELECT * FROM users");
+		$query = $conn->prepare("SELECT * FROM users WHERE id <> ".$_SESSION['user_id']);
 
-	// 	if($query -> execute(array())>0){
+		if($query -> execute(array())>0){
 			
-	// 		return $query->fetchAll(PDO::FETCH_ASSOC);
+			return $query->fetchAll(PDO::FETCH_ASSOC);
 
-	// 	}else{
+		}else{
 
-	// 		echo "Error: ".$e;
-	// 	}
+			return $arrayName = array('status' => 404 );
+		}
 
-	// }
+	}
 
 }
 
- //$user = new User();
+// $user = new User();
+// // echo $user -> insertUser("Damion","Lowers","lowers1989","damionlowers",$conn);
+// print_r(json_encode($user->loginuser("damionlowers","lowers1989",$conn)));
 
  //print_r($user->checkUser("leo",$conn));
 
@@ -170,5 +174,4 @@ class User{
 
 // print_r ($user -> find(1,$conn));
 // print_r ($user -> findAll($conn));
-
 ?>

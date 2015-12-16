@@ -55,6 +55,9 @@ if($_POST['request'] === 'send'){
 	echo json_encode($MessageControllerObj -> insertMessage($messageBody,$subject,$recipent,$conn));
 
 }
+elseif($_POST['request']==='findall'){
+	echo json_encode($MessageControllerObj->all($conn));
+}
 // echo $_SESSION['user_id'];
 
 // print_r($MessageControllerObj -> insertMessage("hey this is the body of the message","just a reminder",'damionlowers',$conn));

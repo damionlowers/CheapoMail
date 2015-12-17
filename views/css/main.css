@@ -110,6 +110,10 @@
 th{
      background-color: #990000;
 }
+td{
+     background-color: #e69900;
+     color: black;
+}
 #bodya h1{
     background: linear-gradient(#990000, #e69900);
     width: 230px;

@@ -23,8 +23,8 @@ class User{
 		// return $this->getProperty();
 	}
 
-	public function insertUser($first_name,$last_name,$password,$username,$conn){
-		$sql = "INSERT INTO users (first_name, last_name, password,username)VALUES ('$first_name','$last_name','$password','$username')";
+	public function insertUser($first_name,$last_name,$password,$username,$usertype,$conn){
+		$sql = "INSERT INTO users (first_name, last_name, password,username,type)VALUES ('$first_name','$last_name','$password','$username','$usertype')";
 
 		// var_dump($conn-> query($sql));
 

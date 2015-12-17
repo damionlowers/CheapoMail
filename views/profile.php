@@ -22,7 +22,7 @@ require_once "../php/config/access_controller.php";
     <script src="js/main.js" type="text/javascript"></script>
 	</head>
 
-	<body ng-controller="unread_message_Controller " ng-mousemove="trigger()" >
+	<body ng-controller='unread_message_Controller' ng-mousemove="trigger()" >
 
 
 <!-- navbar-inverse -->

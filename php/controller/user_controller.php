@@ -42,11 +42,11 @@ class UserController extends ApplicationController{
 	}
 
 
-	public function newUser($first_name,$last_name,$password,$username,$conn){
+	public function newUser($first_name,$last_name,$password,$username,$usertype,$conn){
 
 
 		$allUsers = new User;
-		$user = $allUsers -> insertUser($first_name,$last_name,$password,$username,$conn);
+		$user = $allUsers -> insertUser($first_name,$last_name,$password,$username,$usertype,$conn);
 		return $user;
 
 		
@@ -96,8 +96,9 @@ elseif($_POST['request'] === 'insert')
 	$last_name = $_POST['lastname'];
 	$password = $_POST['password'];
 	$username = $_POST['username'];
+	$usertype = $_POST['usertype'];
 
-	echo json_encode($userObj -> newUser($first_name,$last_name,$password,$username,$conn));
+	echo json_encode($userObj -> newUser($first_name,$last_name,$password,$username,$usertype,$conn));
 
 }
 elseif ($_POST['request'] === 'checkuser') {

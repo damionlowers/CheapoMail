@@ -91,7 +91,7 @@ require_once "../php/config/access_controller.php";
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li id="usernameID">Damion Lowers  </li>
+                <li id="usernameID"><?php echo $_SESSION['username']?></li>
                 <li><button type="button" class="btn btn-danger" id="logout">log out</button></li>
 
             </ul>

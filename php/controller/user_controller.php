@@ -2,88 +2,47 @@
 require_once "application_controller.php";
 require_once "../module/user.php";
 require_once "../config/config.php";
-
-
 class UserController extends ApplicationController{
-
 	public function all($conn){
 		$allUsers = new User;
-
 		$Users = $allUsers -> findAll($conn);
-
 		return $Users;
 	}
-
-
 	public function find($userID,$conn){
-
 		$allUsers = new User;
-
 		$user = $allUsers->find($userID,$conn);
 		return $user;
 	}
-
-	public function logout(){
-
-		session_destroy();
-
-		return array('status'=>200);
-
-	}
-
-
 	public function login($username,$password,$conn){
-
 		$allUsers = new User;
 		$user = $allUsers -> loginuser($username,$password,$conn);
-
 		return $user;
-
 	}
-
-
-	public function newUser($first_name,$last_name,$password,$username,$usertype,$conn){
-
-
+	public function newUser($first_name,$last_name,$password,$username,$conn){
 		$allUsers = new User;
-		$user = $allUsers -> insertUser($first_name,$last_name,$password,$username,$usertype,$conn);
+		$user = $allUsers -> insertUser($first_name,$last_name,$password,$username,$conn);
 		return $user;
-
 		
 	}
-
 	public function CheckUser($username, $conn){
-
 		$allUsers = new User;
 		$user = $allUsers -> checkUser($username, $conn);
 		return $user;
-
 	}
-
 }
-
-
-
-
 $userObj = new UserController;
 // print_r($test-> all($conn))
-
-
 if( $_POST['request'] === 'login'){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	//json_encode($test -> login($username,$password,$conn));
 	echo json_encode($userObj -> login($username,$password,$conn));
-
 	//print_r($arrayName = array('status'=>403 ));
 }
 elseif($_POST['request']==='find')
 {
-
 	$user_id = $_POST['user_id'];
-
 	echo json_encode($userObj -> find($user_id,$conn));
-
 }
 elseif ($_POST['request'] ==='findallUsers')
 {
@@ -96,34 +55,19 @@ elseif($_POST['request'] === 'insert')
 	$last_name = $_POST['lastname'];
 	$password = $_POST['password'];
 	$username = $_POST['username'];
-	$usertype = $_POST['usertype'];
-
-	echo json_encode($userObj -> newUser($first_name,$last_name,$password,$username,$usertype,$conn));
-
+	echo json_encode($userObj -> newUser($first_name,$last_name,$password,$username,$conn));
 }
 elseif ($_POST['request'] === 'checkuser') {
-
 	$username = $_POST['username'];
-
 	echo json_encode($userObj -> CheckUser($username,$conn));
 }
-
 elseif($_POST['request'] === 'delete')
 {
-
-}
-elseif($_POST['request'] === 'logout'){
-
-	echo json_encode($userObj -> logout());
 }
 else
 {
 	echo "Something is wrong";
 }
-
 //echo "jsut a test";
-
-
 // echo UserController -> all();
-
 ?>

@@ -9,7 +9,7 @@ require_once "../php/config/access_controller.php";
 		<title>Profile</title>
 		<link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link href="css/bootstrap/main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/angular.min.js"></script>
@@ -21,8 +21,7 @@ require_once "../php/config/access_controller.php";
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js" type="text/javascript"></script>
 	</head>
-
-	<body ng-controller='unread_message_Controller' ng-mousemove="trigger()" >
+	<body id="bodya" ng-controller="unread_message_Controller" ng-mousemove="trigger()">
 
 
 <!-- navbar-inverse -->
@@ -44,7 +43,7 @@ require_once "../php/config/access_controller.php";
 
             </button> -->
 
-            <a href="#" class="navbar-brand">Brand</a>
+            <a href="#" class="navbar-brand"><i></i></a>
 
         </div>
 
@@ -92,7 +91,7 @@ require_once "../php/config/access_controller.php";
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li id="usernameID"><?php echo $_SESSION['username']?></li>
+                <li id="usernameID">Damion Lowers  </li>
                 <li><button type="button" class="btn btn-danger" id="logout">log out</button></li>
 
             </ul>
@@ -112,21 +111,21 @@ require_once "../php/config/access_controller.php";
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
+                    
+                       Cheapermail
+                  
                 </li>
                 <!-- <li>
                     <a href="#compose_partial">Compose Messages</a>
                 </li> -->
                 <li>
-                    <a href="#unread_message_partial">Unread Messages</a>
+                    <a href="#unread_message_partial" >Unread Messages</a>
                 </li>
                 <li>
-                    <a href="#read_messages_partial">Read Messages</a>
+                    <a href="#read_messages_partial" >Read Messages</a>
                 </li>
                 <li>
-                    <a href="#users_partial">Users</a>
+                    <a href="#users_partial" >Users</a>
                 </li>
                 <li>
                     <a href="#/">My Links</a>
@@ -148,7 +147,7 @@ require_once "../php/config/access_controller.php";
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p> -->
                         <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                        <button type="button" id="openmodal" class="btn btn-default" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">

@@ -67,13 +67,64 @@
      font-size: 34px;
      font-style: italic;
 }
-.sidebar-wrapper{
+#sidebar-wrapper{
+    background: linear-gradient(#990000, #e69900);
+}
+#signup{
+    background-color: #e69900;
+    margin-bottom: 30px;
+}
 
+#menu-toggle{
+    background-color: #e69900;
+}
+#logout{
+    background-color: #990000;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+.modal-body{
+    background: linear-gradient(#990000, #e69900);
+}
+.modal-header{
+    background-color: #990000;
+}
+.modal-footer{
+    background-color: #990000;
+}
+.modal-footer button{
+    background-color: #e69900;
+    color: black;
+}
+#openmodal{
+    background-color: #e69900;
 }
 
 #bodya{
-    background-image:url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQuGfpX6RuRf47Z-Ok62900RKUPCSSwsnEAUfM-MH35yhuvz6ZX');
+    background-image:url('http://6.firepic.org/6/images/2014-12/20/pzr9e9kdm3lg.jpg');
    background-repeat:no-repeat;
-    background-size: 110% 250%;
+    background-size: 100% 280%;
    color: white;
+   text-decoration: 
+}
+th{
+     background-color: #990000;
+}
+h1{
+    background: linear-gradient(#990000, #e69900);
+    width: 230px;
+    text-align: center;
+}
+span{
+    background-color: #990000;
+}
+.ng-scope{
+    margin-bottom: 20px;
+}
+#usernameID{
+    background-color: #e69900;
+    margin-right: 15px;
+    margin-top: 10px;
+    width: 120px;
+    text-align: center;
 }

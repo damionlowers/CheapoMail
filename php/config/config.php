@@ -61,9 +61,9 @@
 
 // LEO CONFIG
 $dbusername = "root";
-$dbpassword = "admin";
+$dbpassword = "";
 $dbhost = "127.0.0.1";
-$DBname = 'cheapermailDB';
+$DBname = 'cheapermail';
 try {
 	$conn = new PDO("mysql:host=$dbhost;dbname=$DBname", $dbusername, $dbpassword);
 	// set the PDO error mode to exception

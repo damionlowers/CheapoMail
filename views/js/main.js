@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	$("#menu-toggle").click(function(e) {
 		e.preventDefault();
 		$("#wrapper").toggleClass("toggled");
@@ -14,11 +14,15 @@ $(document).ready(function(){
 			$('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
 			alert("Please fill all fields...!!!!!!");
 		}else {
+			//alert("Successful login");
 			$.post("../php/controller/user_controller.php",{ username: username, password:password, request:'login' },
 				function(data) {
+					//alert("Successful login");
 					data=JSON.parse(data);
+					alert("Successful login");
 					if(data.status==200){
-						location.href="profile.php";
+						//alert("Successful login");
+						location.href="oldprofile.html";
 						// $('#usernameID').html(username);
 					}else{
 						$('input[type="text"],input[type="password"]').css("border","2px solid red");

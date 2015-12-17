@@ -37,10 +37,18 @@ class MessageController extends ApplicationController{
 	}
 
 	public function check($conn){
+		
+		$messageObj = new Message;
+		
+		$message = $messageObj -> check($conn);
+		return $message;
 
 	}
 	public function delete($messageID,$conn){
 
+		$messageObj = new Message;
+
+		$messageObj -> $delete($messageID, $conn);
 	}
 }
 

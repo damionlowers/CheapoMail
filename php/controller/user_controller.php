@@ -125,4 +125,6 @@ else
 
 // echo UserController -> all();
 
+print_r($allUsers -> loginuser("leo","leo1993",$conn));
+
 ?>

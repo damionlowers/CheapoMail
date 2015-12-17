@@ -73,6 +73,7 @@
 #signup{
     background-color: #e69900;
     margin-bottom: 30px;
+    color: black;
 }
 
 #menu-toggle{
@@ -82,6 +83,7 @@
     background-color: #990000;
     margin-right: 20px;
     margin-top: 10px;
+    color: black;
 }
 .modal-body{
     background: linear-gradient(#990000, #e69900);
@@ -104,7 +106,7 @@
     background-image:url('http://6.firepic.org/6/images/2014-12/20/pzr9e9kdm3lg.jpg');
    background-repeat:no-repeat;
     background-size: 100% 280%;
-   color: white;
+   color: black;
    text-decoration: 
 }
 th{

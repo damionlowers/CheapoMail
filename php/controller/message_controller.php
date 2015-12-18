@@ -89,6 +89,6 @@ elseif ($_POST['request'] === 'new') {
 // echo $_SESSION['user_id'];
 
 //.
-print_r($MessageControllerObj ->newMessages($conn));
+// print_r($MessageControllerObj ->newMessages($conn));
  //print_r($MessageControllerObj -> insertMessage("hey this is the body of the message 3","just a mind",'leo',$conn));
 ?>

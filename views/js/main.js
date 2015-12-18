@@ -22,7 +22,7 @@ $(document).ready(function(){
 					alert("Successful login");
 					if(data.status==200){
 						//alert("Successful login");
-						location.href="oldprofile.html";
+						location.href="profile.php";
 						// $('#usernameID').html(username);
 					}else{
 						$('input[type="text"],input[type="password"]').css("border","2px solid red");

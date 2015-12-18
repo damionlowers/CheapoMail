@@ -50,6 +50,15 @@ class MessageController extends ApplicationController{
 
 		$messageObj -> $delete($messageID, $conn);
 	}
+
+	public function newMessages($conn){
+		
+		$messageObj = new Message;
+		
+		$message = $messageObj -> newMessages($conn);
+		return $message;
+
+	}
 }
 
 $MessageControllerObj = new MessageController;
@@ -63,10 +72,23 @@ if($_POST['request'] === 'send'){
 	echo json_encode($MessageControllerObj -> insertMessage($messageBody,$subject,$recipent,$conn));
 
 }
-elseif($_POST['request']==='findall'){
+elseif($_POST['request'] ==='findall'){
 	echo json_encode($MessageControllerObj->all($conn));
+}
+
+elseif($_POST['request'] ==='delete'){
+
+	$messageID = $_POST['message_id'];
+
+	echo json_encode($MessageControllerObj->delete($messageID,$conn));
+}
+elseif ($_POST['request'] === 'new') {
+
+	echo json_encode($MessageControllerObj->newMessages($conn));
 }
 // echo $_SESSION['user_id'];
 
-// print_r($MessageControllerObj -> insertMessage("hey this is the body of the message","just a reminder",'damionlowers',$conn));
+//.
+print_r($MessageControllerObj ->newMessages($conn));
+ //print_r($MessageControllerObj -> insertMessage("hey this is the body of the message 3","just a mind",'leo',$conn));
 ?>

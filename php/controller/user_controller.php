@@ -123,8 +123,8 @@ else
 //echo "jsut a test";
 
 
-// echo UserController -> all();
+//echo UserController -> all();
 
-print_r($allUsers -> loginuser("leo","leo1993",$conn));
+//print_r($allUsers -> loginuser("leo","leo1993",$conn));
 
 ?>

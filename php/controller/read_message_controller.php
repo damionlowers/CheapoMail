@@ -37,18 +37,24 @@ class ReadMessageController extends ApplicationController{
 	}
 
 	public function check($conn){
+		$messageObj = new Message;
+		
+		$message = $messageObj -> check($conn);
+		return $message;
 
 	}
 	public function delete($messageID,$conn){
+
+		$messageObj = new Message;
+
+		$messageObj -> $delete($messageID, $conn);
 
 	}
 }
 
 $MessageControllerObj = new MessageController;
 
-$request = (isset($_POST['request']) ? $_POST['request']:null); 
-
-if( $request === 'send'){
+if($_POST['request'] === 'send'){
 
 	$subject = $_POST['subject'];
 	$recipent = $_POST['recepent'];
@@ -60,7 +66,13 @@ if( $request === 'send'){
 elseif($_POST['request'] === 'findall' ){
 	echo json_encode($MessageControllerObj->all($conn));
 }
+
+elseif($_POST['request']==='delete'){
+	$messageID = $_POST['message_id'];
+
+	echo json_encode($MessageControllerObj->delete($messageID,$conn))
+}
 // echo $_SESSION['user_id'];
 
-print_r($MessageControllerObj -> insertMessage("hey this is the body of the message","just a reminder",'leo',$conn));
+// print_r($MessageControllerObj -> insertMessage("hey this is the body of the message","just a reminder",'damionlowers',$conn));
 ?>

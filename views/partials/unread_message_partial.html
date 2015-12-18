@@ -15,6 +15,7 @@
 			<th st-sort="Subjects">Subjects</th>
 			<th st-sort="Sender">Sender</th>
 			<th st-sort="Date">Date</th>
+			<th>view</th>
 			<th>reply</th>
 		</tr>
 		<tr>
@@ -31,6 +32,7 @@
 			<td>{{row.subject | uppercase}}</td>
 			<td>{{row.user_id}}</td>
 			<td>{{row.created_at | date}}</td>
+			<td><a ng-href="mailto:{{row.view}}">view</a></td>
 			<td><a ng-href="mailto:{{row.email}}">reply</a></td>
 		</tr>
 		</tbody>

@@ -46,7 +46,9 @@ class Message{
 
 	}
 	public function findall($conn){
-		$query = $conn->prepare("SELECT * FROM messages");
+		$session =  $_SESSION['user_id'];
+		//echo $session;
+		$query = $conn->prepare("SELECT * FROM messages where recipent_id =$session order by id DESC");
 
 		if($query -> execute(array())>0){
 			

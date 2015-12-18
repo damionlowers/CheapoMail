@@ -9,8 +9,8 @@ create table users(
 	last_name varchar(30) NOT NULL,
 	password varchar(60) NOT NULL,
 	username varchar(30) NOT NULL,
-	created_at,
-	updated_at,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL,
 	type varchar(30) NOT NULL DEFAULT "Regular",
 	PRIMARY KEY(id)
 );
@@ -22,8 +22,8 @@ create table messages(
 	user_id int(11) NOT NULL,
 	flag int(11) NOT NULL DEFAULT 0,
 	recipent_id int(11) NOT NULL,
-	created_at,
-	updated_at,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(user_id) references users(id) on delete cascade on update cascade,
 	FOREIGN KEY(recipent_id) references users(id) on delete cascade on update cascade
@@ -34,7 +34,7 @@ create table read_messages(
 	id int(11) auto_increment NOT NULL,
 	message_id int(11) NOT NULL,
 	reader_id int(11) NOT NULL,
-	created_at,
+	created_at TIMESTAMP NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY(message_id) references messages(id) on delete cascade on update cascade,
 	FOREIGN KEY (reader_id) references users(id) on delete cascade on update cascade

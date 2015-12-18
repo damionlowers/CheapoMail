@@ -37,7 +37,7 @@ App.controller('unread_message_Controller', function($scope) {
 
 	$scope.trigger = function(){
 
-				
+
 		var promise = $.post("../php/controller/message_controller.php",{request:'findall' }).then(
 			function(response) {
 				// do something
@@ -79,6 +79,11 @@ App.controller('unread_message_Controller', function($scope) {
 App.controller('Mycontroller', function($scope) {
          $scope.message = "Hello Angular";
 
+         $scope.cltr = function(){
+         	$scope.cltr = "Mycontroller";
+         }
+         // unread_message_Controller 
+
          
     });
 
@@ -99,12 +104,18 @@ App.controller('read_message_Controller',function($scope) {
 App.controller('users_Controller',function($scope) {
          $scope.message = "Users";
 
+         $scope.data = {
+    		singleSelect: null,
+		  };
+
+
          $scope.addUser = function(){
          	var username = $scope.username;
          	var firstname = $scope.firstname;
          	var lastname = $scope.lastname;
          	var password = $scope.password;
          	var cPassword = $scope.cPassword;
+
 
          	if( cPassword != password){
          		alert("passwords do not match");
@@ -125,18 +136,28 @@ App.controller('users_Controller',function($scope) {
 					}
 					else{
 						alert("soon Successful");
+						alert($scope.data.singleSelect);
 						$.post("../php/controller/user_controller.php",{ 
 							firstname:firstname, 
 							lastname:lastname, 
 							username:username, 
 							password:password,
+							usertype:$scope.data.singleSelect,
 							request:'insert'
 						},
 						function(data) {
 							alert("created "+data);
 			 				data=JSON.parse(data);
-							if(data.status==200)
-			 					alert("Successful");
+							if(data.status==200){
+
+								alert("Successful");
+				 				$scope.username='';
+					         	$scope.firstname='';
+					         	$scope.lastname='';
+					         	$scope.password='';
+					         	$scope.cPassword='';
+
+							}
 			 				else
 			 					alert("User not created");
 			 			});

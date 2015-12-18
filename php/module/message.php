@@ -45,10 +45,12 @@ class Message{
 		}
 
 	}
+
+
 	public function findall($conn){
 		$session =  $_SESSION['user_id'];
 		//echo $session;
-		$query = $conn->prepare("SELECT * FROM messages where recipent_id =$session order by id DESC");
+		$query = $conn->prepare("SELECT * FROM messages where recipent_id = $session order by id DESC");
 
 		if($query -> execute(array())>0){
 			
@@ -60,6 +62,7 @@ class Message{
 		}
 
 	}
+
 
 	public function delete($messageID,$conn){
 		$sql = "DELETE FROM messages WHERE id=$userID";
@@ -92,5 +95,8 @@ class Message{
 }
 
 // $messageObj = new Message;
+// echo "gsdgsdg";
+// echo $_SESSION["user_id"];
+// echo "gsdgfg";
 // print_r($messageObj->findall($conn));
 ?>

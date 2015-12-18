@@ -97,9 +97,10 @@ class User{
 	}
 }
 // $user = new User();
- //print_r($user->checkUser("leo",$conn));
- // echo( $user->findbyUsername("damionlowers",$conn)[0]['id']);
- // echo $_SESSION["user_id"];
+//  //print_r($user->checkUser("leo",$conn));
+//  // echo( $user->findbyUsername("damionlowers",$conn)[0]['id']);
+// print_r( $user->loginuser('damionlowers','lowers1989',$conn));
+// echo $_SESSION["user_id"];
 // print_r(json_encode($user->loginuser("damionlowers","lowers1989",$conn)));
 // echo $user -> insertUser("Damion","Lowers","lowers1989","damionlowers",$conn);
 // echo $user-> deleteUser(10,$conn);

@@ -91,6 +91,8 @@ require_once "../php/config/access_controller.php";
 
             <ul class="nav navbar-nav navbar-right">
 
+                <li id="usernameID" class="glyphicon glyphicon-envelope">{{count}}</li>
+
                 <li id="usernameID"><?php echo $_SESSION['username']?></li>
                 <li><button type="button" class="btn btn-danger" id="logout">log out</button></li>
 
@@ -147,7 +149,7 @@ require_once "../php/config/access_controller.php";
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p> -->
                         <!-- Trigger the modal with a button -->
-                        <button type="button" id="openmodal" class="btn btn-default" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                        <button type="button" id="openmodal" class="btn btn-default" data-toggle="modal" data-target="#myModal">Compose</button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">

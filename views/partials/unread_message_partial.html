@@ -8,7 +8,7 @@
 	</div>
 
 
-	
+
 
 <table st-table="rowCollection" class="table table-striped">
 		<thead>
@@ -32,6 +32,28 @@
 			<td>{{row.subject | uppercase}}</td>
 			<td>{{row.user_id}}</td>
 			<td>{{row.created_at | date}}</td>
+			<!-- <td><a ng-href=#>View</a></td> -->
+			<td>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#model{{row.id}}">View</button>
+				<!-- Modal -->
+				<div class="modal fade" id="model{{row.id}}" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">View Message Body</h4>
+							</div>
+							<div class="modal-body">
+								<div class="modal-body">
+									<label rows="18">{{row.message_body}}</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</td>
 			<td><a ng-href="mailto:{{row.email}}">reply</a></td>
 		</tr>
 		</tbody>
@@ -43,6 +65,13 @@
 			</tr>
 		</tfoot>
 	</table>
+
+
+
+	
+  
+</div>
+
 
 
 

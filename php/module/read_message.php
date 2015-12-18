@@ -16,7 +16,7 @@ class readMessage{
 		// echo "Using the toString method: ";
 	}
 
-	public function insert($messageID,readersID,$conn){
+	public function insert($messageID,$readersID,$conn){
 		$sql = "INSERT INTO messages (message_id,readers_id)VALUES ('$messageID','$readersID')";
 
 		// var_dump($conn-> query($sql));
@@ -53,6 +53,7 @@ class readMessage{
 	}
 
 	public function findall($conn){
+		//$session =  $_SESSION['user_id'];
 		$query = $conn->prepare("SELECT * FROM read_messages");
 
 		if($query -> execute(array())>0){

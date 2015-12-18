@@ -35,6 +35,21 @@ App.config(function($routeProvider) {
 
 App.controller('unread_message_Controller', function($scope) {
 
+	var promise = $.post("../php/controller/message_controller.php",{request:'findall' }).then(
+			function(response) {
+				
+				data=JSON.parse(response);
+
+				$scope.itemsByPage=10;
+
+    			$scope.rowCollection = data;
+    			$scope.count = data.length;
+				
+			},
+			function(error) {
+				// report something
+			});
+
 	$scope.trigger = function(){
 
 
@@ -48,6 +63,7 @@ App.controller('unread_message_Controller', function($scope) {
 				$scope.itemsByPage=10;
 
     			$scope.rowCollection = data;
+    			$scope.count = data.length;
 				// console.log("data");
 				// console.log(data);
 				// //alert(data);

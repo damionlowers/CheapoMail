@@ -92,6 +92,21 @@ class Message{
 		}
 	}
 
+	public function newMessages($conn){
+
+		$query = $conn->prepare("SELECT * FROM messages where flag=0");
+
+		if($query -> execute(array())>0){
+
+			$count = count($query);
+
+			return $count;
+
+		}else{
+
+			echo "Error: ".$e;
+		}
+	}
 }
 
 // $messageObj = new Message;

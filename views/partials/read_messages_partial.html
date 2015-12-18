@@ -6,8 +6,41 @@
 	</head>
 
 	<body>
-		<h1>Here</h1>
 		{{message}}
 	</body>
+
+	<table st-table="rowCollection" class="table table-striped">
+		<thead>
+		<tr>
+			<th st-sort="Subjects">Subjects</th>
+			<th st-sort="Sender">Sender</th>
+			<th st-sort="Date">Date</th>
+			<th>reply</th>
+		</tr>
+		<tr>
+			<th>
+				<input st-search="'firstName'" placeholder="search for firstname" class="input-sm form-control" type="search"/>
+			</th>
+			<th colspan="4">
+				<input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="row in rowCollection">
+			<td>{{row.subject | uppercase}}</td>
+			<td>{{row.user_id}}</td>
+			<td>{{row.created_at | date}}</td>
+			<td><a ng-href="mailto:{{row.email}}">reply</a></td>
+		</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="5" class="text-center">
+					<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 
 </html> 

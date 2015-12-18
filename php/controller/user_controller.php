@@ -69,5 +69,11 @@ else
 	echo "Something is wrong";
 }
 //echo "jsut a test";
+
+
+//echo UserController -> all();
+
+//print_r($allUsers -> loginuser("leo","leo1993",$conn));
+
 // echo UserController -> all();
 ?>

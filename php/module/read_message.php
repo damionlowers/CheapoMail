@@ -1,7 +1,6 @@
 <?php
 require_once '../config/config.php';
 require_once 'ApplicationModule.php';
-class Message{
 class readMessage{
 	public function __construct(){
 
@@ -19,7 +18,7 @@ class readMessage{
 	}
 
 	public function insert($messageID,$readersID,$conn){
-		$sql = "INSERT INTO messages (message_id,readers_id)VALUES ('$messageID','$readersID')";
+		$sql = "INSERT INTO read_messages (message_id,readers_id)VALUES ('$messageID','$readersID')";
 
 		// var_dump($conn-> query($sql));
 
@@ -30,7 +29,7 @@ class readMessage{
 		}
 	}
 
-	public function delete(readMessageID,$conn){
+	public function delete($readMessageID,$conn){
 		$sql = "DELETE FROM read_messages WHERE id=$readMessageID";
 
 		if ($conn->query($sql)) {
@@ -41,7 +40,7 @@ class readMessage{
 	}
 
 
-	public function find(readMessageID,$conn){
+	public function find($readMessageID,$conn){
 		$query = $conn->prepare("SELECT * FROM read_messages WHERE id=$messageID");
 
 		if($query -> execute(array())>0){

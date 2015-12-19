@@ -35,7 +35,7 @@
 			<td>{{row.created_at | date}}</td>
 			<!-- <td><a ng-href=#>View</a></td> -->
 			<td>
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#model{{row.id}}" ng-click="formsubmit(messageID)">View</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#model{{row.id}}" ng-click="formsubmit(row.id,row.user_id)">View</button>
 				<!-- Modal -->
 				<div class="modal fade" id="model{{row.id}}" role="dialog">
 					<div class="modal-dialog">

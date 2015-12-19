@@ -55,7 +55,7 @@ class readMessage{
 
 	public function findall($conn){
 		//$session =  $_SESSION['user_id'];
-		$query = $conn->prepare("SELECT * FROM read_messages");
+		$query = $conn->prepare("SELECT * FROM read_messages WHERE flag=1");
 
 		if($query -> execute(array())>0){
 			

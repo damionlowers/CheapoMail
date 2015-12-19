@@ -30,9 +30,20 @@ class MessageController extends ApplicationController{
 		$messageObj = new Message;
 		$user = new User;
 
-		$recipentId = $user -> findbyUsername($recipent,$conn)[0]['id'];
+		$receiver = explode(",", $recipent);
+		$send = array();
+		$i=0;
+		foreach ($receiver as $r_id) {
 
-		$send = $messageObj -> sendMessage($body,$subject,$_SESSION['user_id'],$recipentId,$conn);
+			$recipentId = $user -> findbyUsername($r_id,$conn)[0]['id'];
+
+			$send[$i] = $messageObj -> sendMessage($body,$subject,$_SESSION['user_id'],$recipentId,$conn);
+
+			if ($send[$i] == 404) {
+				return $send[$i];
+			}
+			$i++;
+		}
 		return $send;
 
 	}
@@ -72,9 +83,9 @@ if($_POST['request'] === 'send'){
 
 	$recipent = $_POST['recepent'];
 	$subject = $_POST['subject'];
-	$messageBody = $_POST['messageBody'];
+	$body = $_POST['messageBody'];
 
-	echo json_encode($MessageControllerObj -> insertMessage($messageBody,$subject,$recipent,$conn));
+	echo json_encode($MessageControllerObj -> insertMessage($body,$subject,$recipent,$conn));
 
 }
 elseif($_POST['request'] ==='findall'){
@@ -105,5 +116,5 @@ elseif ($_POST['request'] === 'new') {
 
 //.
 // print_r($MessageControllerObj ->newMessages($conn));
- //print_r($MessageControllerObj -> insertMessage("hey this is the body of the message 3","just a mind",'leo',$conn));
+ //print_r($MessageControllerObj -> insertMessage("hey this is the body of the message 3","just a mind",'dam,bob',$conn));
 ?>

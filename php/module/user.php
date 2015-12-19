@@ -1,6 +1,10 @@
 <?php
 require_once '../config/config.php';
-session_start();
+require_once 'ApplicationModule.php';
+// class Message{
+// session_start();
+
+
 class User{
 	function __autoload($class_name) {
 		require_once '/config/'.$class_name . '.php';

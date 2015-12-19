@@ -64,6 +64,10 @@ class MessageController extends ApplicationController{
 
 $MessageControllerObj = new MessageController;
 
+
+
+
+
 if($_POST['request'] === 'send'){
 
 	$recipent = $_POST['recepent'];
@@ -87,9 +91,17 @@ elseif ($_POST['request'] === 'new') {
 
 	echo json_encode($MessageControllerObj->newMessages($conn));
 }
+
+
+
+
+
+
+
+
 // echo $_SESSION['user_id'];
 
-// print_r($MessageControllerObj->all($co))
+// print_r($MessageControllerObj->all($conn))
 
 //.
 // print_r($MessageControllerObj ->newMessages($conn));

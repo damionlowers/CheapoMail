@@ -50,43 +50,43 @@ App.controller('unread_message_Controller', function($scope) {
 				// report something
 			});
 
-	// $scope.trigger = function(){
+	$scope.trigger = function(){
 
 
-	// 	var promise = $.post("../php/controller/message_controller.php",{request:'findall' }).then(
-	// 		function(response) {
-	// 			// do something
-	// 			// console.log("jhgjks");
-	// 			// console.log(answer);
-	// 			data=JSON.parse(response);
+		var promise = $.post("../php/controller/message_controller.php",{request:'findall' }).then(
+			function(response) {
+				// do something
+				// console.log("jhgjks");
+				// console.log(answer);
+				data=JSON.parse(response);
 
-	// 			console.log(data);
+				console.log(data);
 
-	// 			$scope.itemsByPage=10;
+				$scope.itemsByPage=10;
 
- //    			$scope.rowCollection = data;
- //    			$scope.count = data.length;
-	// 			// console.log("data");
-	// 			// console.log(data);
-	// 			// //alert(data);
-	// 			// console.log("data");
-	// 			// $scope.messages = data;
-	// 			// ///
-	// 			// $scope.message = 'This is unread messages';
-	// 			// // model for bs-table
-	// 			// $scope.contactList = [];
+    			$scope.rowCollection = data;
+    			$scope.count = data.length;
+				// console.log("data");
+				// console.log(data);
+				// //alert(data);
+				// console.log("data");
+				// $scope.messages = data;
+				// ///
+				// $scope.message = 'This is unread messages';
+				// // model for bs-table
+				// $scope.contactList = [];
 
-	// 			// // get contact list
-	// 			// $scope.contactList = data;
+				// // get contact list
+				// $scope.contactList = data;
 
-	// 		},
-	// 		function(error) {
-	// 			// report something
-	// 		});
-	// 	//console.log('This is unread messages');
-	// 	//$scope.message = 'This is unread messages';
+			},
+			function(error) {
+				// report something
+			});
+		//console.log('This is unread messages');
+		//$scope.message = 'This is unread messages';
 
-	// }
+	}
 
 
 	$scope.formsubmit = function(messageID,userID){

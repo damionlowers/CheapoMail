@@ -50,6 +50,34 @@ $(document).ready(function(){
 	});
 
 
+	var passwordChecker = function(str){
+		if (str.length < 8){
+
+			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+			alert('password too short');
+
+			return false;
+		}else if(str.search(/\d/) == -1){
+
+			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+			alert('please include a digit in password');
+			return false;
+
+		}else if(str.search(/[A-Z]/) == -1){
+			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+			alert('please include a UpperCase Letter in password');
+			return false;
+
+		}else if(str.search(/[a-zA-Z]/) == -1){
+			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+			alert('please include a  Letter in password');
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+
 
 
 	
@@ -60,6 +88,7 @@ $(document).ready(function(){
 		var lastname = $("#last_name").val();
 		var username = $("#username").val();
 		var password = $("#password").val();
+
 		// alert("fhjjdfh");
 		var cpassword = $("#password_confirmation").val();
 		// console.log(cpassword+" "+password);
@@ -74,7 +103,12 @@ $(document).ready(function(){
 		else {
 			// alert("hhhhhh");
 			// console.log(cpassword+" "+password);
-			$.post("../../php/controller/user_controller.php",{ username: username, request:'checkuser' },
+			
+			if (passwordChecker(password)) {
+
+
+
+				$.post("../../php/controller/user_controller.php",{ username: username, request:'checkuser' },
 				function(data){
 					// alert("this"+data);
 					data=JSON.parse(data);
@@ -100,8 +134,11 @@ $(document).ready(function(){
 			 					alert("User not created");
 			 			});
 					}
-				}
-			);
+				});
+
+
+
+			};
 		}
 	});
 

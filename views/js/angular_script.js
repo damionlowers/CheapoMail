@@ -88,6 +88,49 @@ App.controller('unread_message_Controller', function($scope) {
 
 	}
 
+
+	$scope.formsubmit = function(messageID,userID){
+
+		// alert(messageID+ "     "+userID);
+
+		var promise = $.post("../php/controller/read_message_controller.php",{message_id:messageID,reader_id:userID,request:'insert' }).then(
+			function(response2) {
+				data2=JSON.parse(response2);
+
+				alert(data2);
+
+				alert("inside data2");
+
+				if (data2.status == 200) {
+
+					var promise = $.post("../php/controller/message_controller.php",{message_id:messageID,request:'delete' }).then(
+					function(response1) {
+						data1=JSON.parse(response1);
+
+						if (data1.status == 200) {
+							alert("ok");
+						}else{
+							alert("not ok");
+						};
+					},
+					function(error) {
+						// report something
+					});
+
+				}else{
+
+					alert(data2);
+
+				};
+			},
+			function(error) {
+			// report something
+		});
+	}
+
+
+
+
 });
 
 
@@ -124,7 +167,7 @@ App.controller('read_message_Controller',function($scope) {
 
 				$scope.itemsByPage=10;
 
-    			$scope.rowCollection = data;
+    			$scope.allReadMessages = data;
     			$scope.count = data.length;
 				
 			},
@@ -169,6 +212,11 @@ App.controller('read_message_Controller',function($scope) {
 	}
 
     });
+
+
+
+
+
 
 
 App.controller('users_Controller',function($scope) {

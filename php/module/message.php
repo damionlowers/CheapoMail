@@ -66,12 +66,12 @@ class Message{
 
 
 	public function delete($messageID,$conn){
-		$sql = "DELETE FROM messages WHERE id=$userID";
+		$sql = "DELETE FROM messages WHERE id=$messageID";
 
 		if ($conn->query($sql)) {
-			echo "Record deleted successfully<br/>";
+			return array('status' => 200);
 		} else {
-			echo "Error deleting record: <br/>" . $conn->error;
+			return array('status' => 404);
 		}
 	}
 
@@ -91,6 +91,10 @@ class Message{
 			// echo "Error: " . $sql . "<br>";
 			return array("status"=>404);
 		}
+
+
+
+		
 	}
 
 	public function newMessages($conn){

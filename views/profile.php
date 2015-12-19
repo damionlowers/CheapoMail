@@ -21,7 +21,7 @@ require_once "../php/config/access_controller.php";
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js" type="text/javascript"></script>
 	</head>
-	<body id="bodya" ng-controller="unread_message_Controller" ng-mousemove="trigger()">
+	<body id="bodya" ng-controller="read_message_Controller" ng-mousemove="trigger()">
 
 
 <!-- navbar-inverse -->
@@ -163,6 +163,8 @@ require_once "../php/config/access_controller.php";
                               </div>
                               <div class="modal-body">
                                <div class="modal-body">
+
+
                                   <form role="form" class="form-horizontal">
                                       <div class="form-group">
                                         <label class="col-sm-2" for="inputTo">To</label>
@@ -177,6 +179,9 @@ require_once "../php/config/access_controller.php";
                                         <div class="col-sm-12"><textarea class="form-control" id="inputBody" rows="18"></textarea></div>
                                       </div>
                                   </form>
+
+
+                                  
                                 </div>
                               </div>
                               <div class="modal-footer">

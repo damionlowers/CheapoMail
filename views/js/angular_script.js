@@ -88,6 +88,11 @@ App.controller('unread_message_Controller', function($scope) {
 
 	}
 
+
+	$scope.formsubmit = function(messageID){
+		alert("hey i am in view"+messageID);
+	}
+
 });
 
 

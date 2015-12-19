@@ -91,6 +91,10 @@ class Message{
 			// echo "Error: " . $sql . "<br>";
 			return array("status"=>404);
 		}
+
+
+
+		
 	}
 
 	public function newMessages($conn){

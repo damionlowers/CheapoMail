@@ -7,13 +7,13 @@ require_once "../config/config.php";
 
 class ReadMessageController extends ApplicationController{
 
-	// public function all($conn){
+	public function all($conn){
 
-	// 	$messageObj = new Message;
-	// 	$messages = $messageObj -> findall($conn);
-	// 	return $messages;
+		$messageObj = new readMessage;
+		$messages = $messageObj -> findall($conn);
+		return $messages;
 
-	// }
+	}
 
 	// public function find($id,$conn){
 
@@ -54,7 +54,7 @@ class ReadMessageController extends ApplicationController{
 	
 }
 
-// $MessageControllerObj = new ReadMessageController;
+$MessageControllerObj = new ReadMessageController;
 
 // if($_POST['request'] === 'send'){
 
@@ -77,13 +77,18 @@ class ReadMessageController extends ApplicationController{
 
 // print_r($_POST);
 
-// if($_POST['request'] === 'insert'){
-// 	$messageID = $_POST['message_id'];
-// 	$readersID = $_POST['reader_id'];
+if($_POST['request'] === 'insert'){
+	$messageID = $_POST['message_id'];
+	$readersID = $_POST['reader_id'];
 
-// 	json_encode($MessageControllerObj -> insertMessage($messageID,$readersID,$conn));
+	echo json_encode($MessageControllerObj -> insertMessage($messageID,$readersID,$conn));
 
-// }
+}
+elseif($_POST['request'] === 'findall'){
+
+	echo json_encode($MessageControllerObj->all($conn));
+
+}
 // echo $_SESSION['user_id'];
 
 // print_r($MessageControllerObj -> insertMessage("hey this is the body of the message","just a reminder",'damionlowers',$conn));

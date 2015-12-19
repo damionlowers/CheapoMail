@@ -60,7 +60,7 @@ class MessageController extends ApplicationController{
 
 		$messageObj = new Message;
 
-		$messageObj -> $delete($messageID, $conn);
+		return $messageObj -> delete($messageID, $conn);
 	}
 
 	public function newMessages($conn){

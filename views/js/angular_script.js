@@ -50,82 +50,82 @@ App.controller('unread_message_Controller', function($scope) {
 				// report something
 			});
 
-	$scope.trigger = function(){
+	// $scope.trigger = function(){
 
 
-		var promise = $.post("../php/controller/message_controller.php",{request:'findall' }).then(
-			function(response) {
-				// do something
-				// console.log("jhgjks");
-				// console.log(answer);
-				data=JSON.parse(response);
+	// 	var promise = $.post("../php/controller/message_controller.php",{request:'findall' }).then(
+	// 		function(response) {
+	// 			// do something
+	// 			// console.log("jhgjks");
+	// 			// console.log(answer);
+	// 			data=JSON.parse(response);
 
-				console.log(data);
+	// 			console.log(data);
 
-				$scope.itemsByPage=10;
+	// 			$scope.itemsByPage=10;
 
-    			$scope.rowCollection = data;
-    			$scope.count = data.length;
-				// console.log("data");
-				// console.log(data);
-				// //alert(data);
-				// console.log("data");
-				// $scope.messages = data;
-				// ///
-				// $scope.message = 'This is unread messages';
-				// // model for bs-table
-				// $scope.contactList = [];
+ //    			$scope.rowCollection = data;
+ //    			$scope.count = data.length;
+	// 			// console.log("data");
+	// 			// console.log(data);
+	// 			// //alert(data);
+	// 			// console.log("data");
+	// 			// $scope.messages = data;
+	// 			// ///
+	// 			// $scope.message = 'This is unread messages';
+	// 			// // model for bs-table
+	// 			// $scope.contactList = [];
 
-				// // get contact list
-				// $scope.contactList = data;
+	// 			// // get contact list
+	// 			// $scope.contactList = data;
 
-			},
-			function(error) {
-				// report something
-			});
-		//console.log('This is unread messages');
-		//$scope.message = 'This is unread messages';
+	// 		},
+	// 		function(error) {
+	// 			// report something
+	// 		});
+	// 	//console.log('This is unread messages');
+	// 	//$scope.message = 'This is unread messages';
 
-	}
+	// }
 
 
 	$scope.formsubmit = function(messageID,userID){
 
 		// alert(messageID+ "     "+userID);
 
-		// var promise = $.post("../php/controller/read_message_controller.php",{message_id:messageID,reader_id:userID,request:'insert' }).then(
-		// 	function(response2) {
-		// 		data2=JSON.parse(response2);
+		var promise = $.post("../php/controller/read_message_controller.php",{message_id:messageID,reader_id:userID,request:'insert' }).then(
+			function(response2) {
+				data2=JSON.parse(response2);
 
-		// 		alert(data);
+				alert(data2);
 
-		// 		alert("inside data2");
+				alert("inside data2");
 
-		// 		if (data2.status == 200) {
+				if (data2.status == 200) {
 
-		// 			var promise = $.post("../php/controller/message_controller.php",{request:'delete' }).then(
-		// 			function(response1) {
-		// 				data1=JSON.parse(response1);
+					var promise = $.post("../php/controller/message_controller.php",{message_id:messageID,request:'delete' }).then(
+					function(response1) {
+						data1=JSON.parse(response1);
 
-		// 				if (data1.status == 200) {
-		// 					alert("ok");
-		// 				}else{
-		// 					alert("not ok");
-		// 				};
-		// 			},
-		// 			function(error) {
-		// 				// report something
-		// 			});
+						if (data1.status == 200) {
+							alert("ok");
+						}else{
+							alert("not ok");
+						};
+					},
+					function(error) {
+						// report something
+					});
 
-		// 		}else{
+				}else{
 
-		// 			alert(data2);
+					alert(data2);
 
-		// 		};
-		// 	},
-		// 	function(error) {
-		// 	// report something
-		// });
+				};
+			},
+			function(error) {
+			// report something
+		});
 	}
 
 
@@ -167,7 +167,7 @@ App.controller('read_message_Controller',function($scope) {
 
 				$scope.itemsByPage=10;
 
-    			$scope.rowCollection = data;
+    			$scope.allReadMessages = data;
     			$scope.count = data.length;
 				
 			},
@@ -175,43 +175,48 @@ App.controller('read_message_Controller',function($scope) {
 				// report something
 			});
 
-	$scope.trigger = function(){
+	// $scope.trigger = function(){
 
 
-		var promise = $.post("../php/controller/read_message_controller.php",{request:'findall' }).then(
-			function(response) {
-				// do something
-				// console.log("jhgjks");
-				// console.log(answer);
-				data=JSON.parse(response);
+	// 	var promise = $.post("../php/controller/read_message_controller.php",{request:'findall' }).then(
+	// 		function(response) {
+	// 			// do something
+	// 			// console.log("jhgjks");
+	// 			// console.log(answer);
+	// 			data=JSON.parse(response);
 
-				$scope.itemsByPage=10;
+	// 			$scope.itemsByPage=10;
 
-    			$scope.rowCollection = data;
-    			$scope.count = data.length;
-				// console.log("data");
-				// console.log(data);
-				// //alert(data);
-				// console.log("data");
-				// $scope.messages = data;
-				// ///
-				// $scope.message = 'This is unread messages';
-				// // model for bs-table
-				// $scope.contactList = [];
+ //    			$scope.rowCollection = data;
+ //    			$scope.count = data.length;
+	// 			// console.log("data");
+	// 			// console.log(data);
+	// 			// //alert(data);
+	// 			// console.log("data");
+	// 			// $scope.messages = data;
+	// 			// ///
+	// 			// $scope.message = 'This is unread messages';
+	// 			// // model for bs-table
+	// 			// $scope.contactList = [];
 
-				// // get contact list
-				// $scope.contactList = data;
+	// 			// // get contact list
+	// 			// $scope.contactList = data;
 
-			},
-			function(error) {
-				// report something
-			});
-		//console.log('This is unread messages');
-		//$scope.message = 'This is unread messages';
+	// 		},
+	// 		function(error) {
+	// 			// report something
+	// 		});
+	// 	//console.log('This is unread messages');
+	// 	//$scope.message = 'This is unread messages';
 
-	}
+	// }
 
     });
+
+
+
+
+
 
 
 App.controller('users_Controller',function($scope) {

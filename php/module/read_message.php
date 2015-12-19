@@ -18,14 +18,14 @@ class readMessage{
 	}
 
 	public function insert($messageID,$readersID,$conn){
-		$sql = "INSERT INTO read_messages (message_id,readers_id)VALUES ('$messageID','$readersID')";
+		$sql = "INSERT INTO read_messages (message_id,reader_id)VALUES ('$messageID','$readersID')";
 
 		// var_dump($conn-> query($sql));
 
 		if ($conn-> query($sql)) {
-			echo "New record created successfully <br/>";
+			return  array('status' => 200 );
 		} else {
-			echo "Error: " . $sql . "<br>";
+			return  array('status' => 404 );
 		}
 	}
 
@@ -33,9 +33,9 @@ class readMessage{
 		$sql = "DELETE FROM read_messages WHERE id=$readMessageID";
 
 		if ($conn->query($sql)) {
-			echo "Record deleted successfully<br/>";
+			return  array('status' => 200 );
 		} else {
-			echo "Error deleting record: <br/>" . $conn->error;
+			return  array('status' => 404 );
 		}
 	}
 
@@ -54,8 +54,8 @@ class readMessage{
 	}
 
 	public function findall($conn){
-		//$session =  $_SESSION['user_id'];
-		$query = $conn->prepare("SELECT * FROM read_messages WHERE flag=1");
+		$session =  $_SESSION['user_id'];
+		$query = $conn->prepare("SELECT * FROM read_messages where reader_id=$session order by id DESC");
 
 		if($query -> execute(array())>0){
 			

@@ -26,7 +26,7 @@ create table messages(
 	updated_at TIMESTAMP NOT NULL,
 	PRIMARY KEY(id),
 	FOREIGN KEY(user_id) references users(id) on delete cascade on update cascade,
-	FOREIGN KEY(recipent_id) references users(id) on delete cascade on update cascade
+	FOREIGN KEY(recipent_id) references users(id) on update cascade
 ); 
 
 
@@ -36,6 +36,6 @@ create table read_messages(
 	reader_id int(11) NOT NULL,
 	created_at TIMESTAMP NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY(message_id) references messages(id) on delete cascade on update cascade,
+	FOREIGN KEY(message_id) references messages(id) on update cascade,
 	FOREIGN KEY (reader_id) references users(id) on delete cascade on update cascade
 );

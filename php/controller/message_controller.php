@@ -32,7 +32,9 @@ class MessageController extends ApplicationController{
 
 		$receiver = explode(",", $recipent);
 		$send = array();
+
 		$i=0;
+
 		foreach ($receiver as $r_id) {
 
 			$recipentId = $user -> findbyUsername($r_id,$conn)[0]['id'];

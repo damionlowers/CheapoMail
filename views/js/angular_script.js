@@ -114,6 +114,58 @@ App.controller('MainClt', function($scope) {
 
 App.controller('read_message_Controller',function($scope) {
 	$scope.message = "read message";
+
+	var promise = $.post("../php/controller/read_message_controller.php",{request:'findall' }).then(
+			function(response) {
+				
+				data=JSON.parse(response);
+
+				$scope.itemsByPage=10;
+
+    			$scope.rowCollection = data;
+    			$scope.count = data.length;
+				
+			},
+			function(error) {
+				// report something
+			});
+
+	$scope.trigger = function(){
+
+
+		var promise = $.post("../php/controller/read_message_controller.php",{request:'findall' }).then(
+			function(response) {
+				// do something
+				// console.log("jhgjks");
+				// console.log(answer);
+				data=JSON.parse(response);
+
+				$scope.itemsByPage=10;
+
+    			$scope.rowCollection = data;
+    			$scope.count = data.length;
+				// console.log("data");
+				// console.log(data);
+				// //alert(data);
+				// console.log("data");
+				// $scope.messages = data;
+				// ///
+				// $scope.message = 'This is unread messages';
+				// // model for bs-table
+				// $scope.contactList = [];
+
+				// // get contact list
+				// $scope.contactList = data;
+
+			},
+			function(error) {
+				// report something
+			});
+		//console.log('This is unread messages');
+		//$scope.message = 'This is unread messages';
+
+	}
+
     });
 
 

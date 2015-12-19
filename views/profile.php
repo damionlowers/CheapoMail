@@ -124,11 +124,21 @@ require_once "../php/config/access_controller.php";
                     <a href="#unread_message_partial" >Unread Messages</a>
                 </li>
                 <li>
-                    <a href="#read_messages_partial" >Read Messages</a>
+                    <a href='#read_messages_partial' >Read Messages</a>
                 </li>
-                <li>
-                    <a href="#users_partial" >Users</a>
-                </li>
+                <?php
+                    if ($_SESSION['user_type'] == 'Admin') {
+                        # code...
+                        echo "
+
+                         <li>
+                            <a href='#users_partial' >Users</a>
+                        </li>
+
+                        ";
+                    }
+                ?>
+               
                 <li>
                     <a href="#/">My Links</a>
                 </li>

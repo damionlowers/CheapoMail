@@ -13,7 +13,7 @@
 		<thead>
 		<tr>
 			<th st-sort="Subjects">Subjects</th>
-			<th st-sort="Sender">Sender</th>
+			<th st-sort="Sender">Owner</th>
 			<th st-sort="Date">Date</th>
 			<th>reply</th>
 		</tr>
@@ -28,8 +28,8 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="row in allReadMessages">
-			<td>{{row.subject | uppercase}}</td>
-			<td>{{row.user_id}}</td>
+			<td>{{row.message_id | uppercase}}</td>
+			<td>{{row.reader_id}}</td>
 			<td>{{row.created_at | date}}</td>
 			<td><a ng-href="#">reply</a></td>
 		</tr>

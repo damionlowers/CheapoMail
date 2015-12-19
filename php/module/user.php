@@ -44,13 +44,15 @@ class User{
 		$query = $conn->prepare("select * FROM users where username=? and password=?");
 		$query -> execute(array($username,$password));
 		//return $query->fetchAll(PDO::FETCH_ASSOC);
-		$result = $query->fetch(PDO::FETCH_ASSOC);
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+		// print_r($result);
 		if(count($result) > 0){
 			// session_start();
 			$_SESSION["username"] = $username;
-			$_SESSION["firstname"] = $result['first_name'];
-			$_SESSION["lastname"] = $result['last_name'];
-			$_SESSION["user_id"] = $result['id'];
+			$_SESSION["firstname"] = $result[0]['first_name'];
+			$_SESSION["lastname"] = $result[0]['last_name'];
+			$_SESSION["user_id"] = $result[0]['id'];
+			$_SESSION["user_type"] = $result[0]['type'];
 			return array("status"=>200);
 			//echo "Logged in successfully";
 			

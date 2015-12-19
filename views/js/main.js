@@ -19,7 +19,7 @@ $(document).ready(function(){
 				function(data) {
 					//alert("Successful login");
 					data=JSON.parse(data);
-					alert("Successful login");
+					//alert("Successful login");
 					if(data.status==200){
 						//alert("Successful login");
 						location.href="profile.php";
@@ -38,7 +38,7 @@ $(document).ready(function(){
 
 	$('#logout').click(function(){
 
-		$.post("../php/controller/user_controller.php",{ request:'logout' },
+		$.post("../php/config/logout.php",{ request:'logout' },
 				function(data) {
 					data=JSON.parse(data);
 					if(data.status==200)

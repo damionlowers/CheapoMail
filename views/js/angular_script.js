@@ -60,6 +60,8 @@ App.controller('unread_message_Controller', function($scope) {
 				// console.log(answer);
 				data=JSON.parse(response);
 
+				console.log(data);
+
 				$scope.itemsByPage=10;
 
     			$scope.rowCollection = data;

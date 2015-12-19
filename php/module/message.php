@@ -1,5 +1,6 @@
 <?php
 require_once '../config/config.php';
+require_once 'ApplicationModule.php';
 class Message{
 	public function __construct(){
 

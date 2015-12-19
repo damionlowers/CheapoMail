@@ -3,6 +3,7 @@ require_once "application_controller.php";
 require_once "../module/message.php";
 require_once "../module/user.php";
 require_once "../config/config.php";
+// require_once "";
 
 
 class MessageController extends ApplicationController{
@@ -98,6 +99,8 @@ elseif ($_POST['request'] === 'new') {
 	echo json_encode($MessageControllerObj->newMessages($conn));
 }
 // echo $_SESSION['user_id'];
+
+// print_r($MessageControllerObj->all($co))
 
 //.
 // print_r($MessageControllerObj ->newMessages($conn));

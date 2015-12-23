@@ -234,6 +234,28 @@ App.controller('users_Controller',function($scope) {
          	var password = $scope.password;
          	var cPassword = $scope.cPassword;
 
+         	var passwordChecker = function(str){
+         		if (str.length < 8){
+         			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+         			alert('password too short');
+         			return false;
+         		}else if(str.search(/\d/) == -1){
+         			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+         			alert('please include a digit in password');
+         			return false;
+         		}else if(str.search(/[A-Z]/) == -1){
+         			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+         			alert('please include a UpperCase Letter in password');
+         			return false;
+         		}else if(str.search(/[a-zA-Z]/) == -1){
+         			$('input[type="text"],input[type="password"]').css("border","2px solid red");
+         			alert('please include a  Letter in password');
+         			return false;
+         		}else{
+         			return true;
+         		}
+         	}
+
 
          	if( cPassword != password){
          		alert("passwords do not match");
@@ -244,44 +266,46 @@ App.controller('users_Controller',function($scope) {
          		alert("Please fill all fields...!!!!!!");
          	}
          	else {
-         		$.post("../php/controller/user_controller.php",{ username: username, request:'checkuser' },
-				function(data){
-					// alert("this"+data);
-					data=JSON.parse(data);
-					// alert("username");
-					if(data.status==200){
-						alert("User already exists");
-					}
-					else{
-						alert("soon Successful");
-						alert($scope.data.singleSelect);
-						$.post("../php/controller/user_controller.php",{ 
-							firstname:firstname, 
-							lastname:lastname, 
-							username:username, 
-							password:password,
-							usertype:$scope.data.singleSelect,
-							request:'insert'
-						},
-						function(data) {
-							alert("created "+data);
-			 				data=JSON.parse(data);
-							if(data.status==200){
-
-								alert("Successful");
-				 				$scope.username='';
-					         	$scope.firstname='';
-					         	$scope.lastname='';
-					         	$scope.password='';
-					         	$scope.cPassword='';
-
-							}
-			 				else
-			 					alert("User not created");
-			 			});
-					}
-				}
-			);
+         		
+         		if (passwordChecker(password)) {
+         			$.post("../php/controller/user_controller.php",{ username: username, request:'checkuser' },
+         				function(data){
+         				// alert("this"+data);
+         				data=JSON.parse(data);
+         				// alert("username");
+         				if(data.status==200){
+         					alert("User already exists");
+         				}
+         				else{
+         					alert("soon Successful");
+         					alert($scope.data.singleSelect);
+         					$.post("../php/controller/user_controller.php",{ 
+         						firstname:firstname, 
+         						lastname:lastname,
+         						username:username,
+         						password:password,
+         						usertype:$scope.data.singleSelect,
+         						request:'insert'
+         					},
+         					function(data) {
+         						alert("created "+data);
+         						data=JSON.parse(data);
+         						if(data.status==200){
+         							alert("Successful");
+         							$scope.username='';
+         							$scope.firstname='';
+         							$scope.lastname='';
+         							$scope.password='';
+         							$scope.cPassword='';
+         						}
+         						else
+         							alert("User not created");
+         					});
+         				}
+         			}
+         			);
+         		}
+         		
          	}
 
          	// http.post("../php/controller/user_controller.php",posts).then(

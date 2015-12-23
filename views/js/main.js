@@ -50,97 +50,100 @@ $(document).ready(function(){
 	});
 
 
-	var passwordChecker = function(str){
-		if (str.length < 8){
+	// var passwordChecker = function(str){
+	// 	if (str.length < 8){
 
-			$('input[type="text"],input[type="password"]').css("border","2px solid red");
-			alert('password too short');
+	// 		$('input[type="text"],input[type="password"]').css("border","2px solid red");
+	// 		alert('password too short');
 
-			return false;
-		}else if(str.search(/\d/) == -1){
+	// 		return false;
+	// 	}else if(str.search(/\d/) == -1){
 
-			$('input[type="text"],input[type="password"]').css("border","2px solid red");
-			alert('please include a digit in password');
-			return false;
+	// 		$('input[type="text"],input[type="password"]').css("border","2px solid red");
+	// 		alert('please include a digit in password');
+	// 		return false;
 
-		}else if(str.search(/[A-Z]/) == -1){
-			$('input[type="text"],input[type="password"]').css("border","2px solid red");
-			alert('please include a UpperCase Letter in password');
-			return false;
+	// 	}else if(str.search(/[A-Z]/) == -1){
+	// 		$('input[type="text"],input[type="password"]').css("border","2px solid red");
+	// 		alert('please include a UpperCase Letter in password');
+	// 		return false;
 
-		}else if(str.search(/[a-zA-Z]/) == -1){
-			$('input[type="text"],input[type="password"]').css("border","2px solid red");
-			alert('please include a  Letter in password');
-			return false;
-		}else{
-			return true;
-		}
-	}
+	// 	}else if(str.search(/[a-zA-Z]/) == -1){
+	// 		$('input[type="text"],input[type="password"]').css("border","2px solid red");
+	// 		alert('please include a  Letter in password');
+	// 		return false;
+	// 	}else{
+	// 		return true;
+	// 	}
+	// }
 
 
 
 
 	
-	//Signup
-	$('#signup').click(function(){
-		// alert("fjhdjdj");
-		var firstname = $("#first_name").val();
-		var lastname = $("#last_name").val();
-		var username = $("#username").val();
-		var password = $("#password").val();
+	// //Signup
+	// $('#signup').click(function(){
+	// 	// alert("fjhdjdj");
+	// 	var firstname = $("#first_name").val();
+	// 	var lastname = $("#last_name").val();
+	// 	var username = $("#username").val();
+	// 	var password = $("#password").val();
 
-		// alert("fhjjdfh");
-		var cpassword = $("#password_confirmation").val();
-		// console.log(cpassword+" "+password);
-		if( cpassword != password){
-			alert("passwords do not match");
-		}
-		else if( firstname ==''|| lastname =='' || username =='' || password =='' || cpassword ==''){
-			$('input[type="text"],input[type="password"]').css("border","2px solid red");
-			$('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
-			alert("Please fill all fields...!!!!!!");
-		}
-		else {
-			// alert("hhhhhh");
-			// console.log(cpassword+" "+password);
+	// 	// alert("fhjjdfh");
+	// 	var cpassword = $("#password_confirmation").val();
+	// 	// console.log(cpassword+" "+password);
+	// 	if( cpassword != password){
+	// 		alert("passwords do not match");
+	// 	}
+	// 	else if( firstname ==''|| lastname =='' || username =='' || password =='' || cpassword ==''){
+	// 		$('input[type="text"],input[type="password"]').css("border","2px solid red");
+	// 		$('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
+	// 		alert("Please fill all fields...!!!!!!");
+	// 	}
+	// 	else {
+	// 		// alert("hhhhhh");
+	// 		// console.log(cpassword+" "+password);
 			
-			if (passwordChecker(password)) {
+	// 		if (passwordChecker(password)) {
+	// 			alert('password in');
+	// 			alert(passwordChecker(password));
+	// 			alert('password out');
 
 
 
-				$.post("../../php/controller/user_controller.php",{ username: username, request:'checkuser' },
-				function(data){
-					// alert("this"+data);
-					data=JSON.parse(data);
-					// alert("username");
-					if(data.status==200){
-						alert("User already exists");
-					}
-					else{
-						alert("soon Successful");
-						$.post("../../php/controller/user_controller.php",{ 
-							firstname:firstname, 
-							lastname:lastname, 
-							username:username, 
-							password:password,
-							request:'insert'
-						},
-						function(data) {
-							alert("created "+data);
-			 				data=JSON.parse(data);
-							if(data.status==200)
-			 					alert("Successful");
-			 				else
-			 					alert("User not created");
-			 			});
-					}
-				});
+	// 			// $.post("../../php/controller/user_controller.php",{ username: username, request:'checkuser' },
+	// 			// function(data){
+	// 			// 	// alert("this"+data);
+	// 			// 	data=JSON.parse(data);
+	// 			// 	// alert("username");
+	// 			// 	if(data.status==200){
+	// 			// 		alert("User already exists");
+	// 			// 	}
+	// 			// 	else{
+	// 			// 		alert("soon Successful");
+	// 			// 		$.post("../../php/controller/user_controller.php",{ 
+	// 			// 			firstname:firstname, 
+	// 			// 			lastname:lastname, 
+	// 			// 			username:username, 
+	// 			// 			password:password,
+	// 			// 			request:'insert'
+	// 			// 		},
+	// 			// 		function(data) {
+	// 			// 			alert("created "+data);
+	// 		 // 				data=JSON.parse(data);
+	// 			// 			if(data.status==200)
+	// 		 // 					alert("Successful");
+	// 		 // 				else
+	// 		 // 					alert("User not created");
+	// 		 // 			});
+	// 			// 	}
+	// 			// });
 
 
 
-			};
-		}
-	});
+	// 		};
+	// 	}
+	// });
 
 
 
